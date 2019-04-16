@@ -4,18 +4,18 @@ module.exports = router
 
 router.get('/', async (req, res, next) => {
   try {
-    const users = await Venue.findAll()
-    res.json(users)
+    const venues = await Venue.findAll()
+    res.json(venues)
   } catch (err) {
     next(err)
   }
 })
 
-router.get('/venues/:id', async (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
   try {
     const id = req.params.id
-    const users = await Venue.findOne({where: {id}})
-    res.json(users)
+    const venue = await Venue.findOneByPk(id)
+    res.json(venue)
   } catch (err) {
     next(err)
   }
