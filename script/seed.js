@@ -1,7 +1,7 @@
 'use strict'
 
 const db = require('../server/db')
-const {User} = require('../server/db/models')
+const {User, Venue} = require('../server/db/models')
 
 async function seed() {
   await db.sync({force: true})
@@ -13,6 +13,60 @@ async function seed() {
   ])
 
   console.log(`seeded ${users.length} users`)
+
+  let offices = []
+  let eventSpaces = []
+  let studios = []
+  
+  function createOffice(num){
+  
+  for (let i = 0; i < num; i++){
+    offices[i] = {
+      name: `Office ${i}`,
+      address: `${i} Main Street`,
+      price: i*25,
+      type: 'Office',
+      capacity: 20
+    }
+  
+  }
+  }
+  function createEventSpace(num){
+  
+  for (let i = 0; i < num; i++){
+    eventSpaces[i] = {
+      name: `Event Space ${i}`,
+      address: `${i} Fulton Street`,
+      price: i*100,
+      type: 'Event-Space',
+      capacity: 200
+    }
+  
+  }
+  }
+  function createStudio(num){
+  
+  for (let i = 0; i < num; i++){
+    studios[i] = {
+      name: `Studio ${i}`,
+      address: `${i} Wall Street`,
+      price: i*50,
+      type: 'Studio',
+      capacity: 5
+    }
+  
+  }
+  }
+
+  createOffice(10)
+  createEventSpace(10)
+  createStudio(10)
+  const venues = [...offices, ...eventSpaces, ...studios]
+  const venuePromises = venues.map(venue => Venue.create(venue))
+  await Promise.all(venuePromises)
+
+  console.log(`seeded ${venues.length} venues`)
+
   console.log(`seeded successfully`)
 }
 
