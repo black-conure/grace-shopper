@@ -2,6 +2,7 @@ const User = require('./user')
 const Venue = require('./venue')
 const Transaction = require('./transaction')
 const TransactionItem = require('./transaction-item')
+const CartItem = require('./cart-item')
 
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -18,6 +19,9 @@ TransactionItem.belongsTo(Transaction)
 Venue.hasMany(TransactionItem)
 TransactionItem.belongsTo(Venue)
 
+User.belongsToMany(Venue, {through: CartItem})
+Venue.belongsToMany(User, {through: CartItem})
+
 /**
  * We'll export all of our models here, so that any time a module needs a model,
  * we can just require it from 'db/models'
@@ -28,5 +32,6 @@ module.exports = {
   User,
   Venue,
   Transaction,
-  TransactionItem
+  TransactionItem,
+  CartItem
 }
