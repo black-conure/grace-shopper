@@ -18,7 +18,6 @@ const defaultVenueState = {
  * ACTION CREATORS
  */
 const getAllVenues = venues => {
-  console.log('IN GET ALL VENUES ACTION CRATOR'  )
   return {type: GET_ALL_VENUES, venues}
 }
 const removeVenue = () => ({type: REMOVE_VENUE})
@@ -30,11 +29,9 @@ export const fetchAllVenues = () => {
   return async (dispatch) => {
     try {
       const venues = await axios.get('/api/venues')
-      console.log('VENUES:', venues.data)
       dispatch(getAllVenues(venues.data))
     }
-    catch (error) { next(error)}
-
+    catch (error) { console.error(error)}
   }
 }
 

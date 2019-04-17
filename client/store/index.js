@@ -7,7 +7,7 @@ import venueReducer from './venue'
 
 const rootReducer = combineReducers({
   user : userReducer,
-  venueState : venueReducer
+  venues : venueReducer
 })
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
