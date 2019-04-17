@@ -2,31 +2,8 @@ const router = require('express').Router()
 const {TransactionItem, Transaction} = require('../db/models')
 module.exports = router
 
-router.get('/', async(req, res, next) => {
-  if (!req.user){
-    const err = new Error('Please login or sign up to use the cart.')
-    err.status = 401
-    next(err)
-    return
-  }
-  try {
-   let shoppingCart = await req.user.getTransactions(
-     {
-      where: {
-        isCart: true,
-      },
-      include: [{model: TransactionItem}]
-      }
-    )
-    res.json(shoppingCart)
-  }
-  catch (err){
-    next(err)
-  }
-})
-
-router.post('/', async(req, res,next) => {
-  if (!req.user){
+router.get('/', async (req, res, next) => {
+  if (!req.user) {
     const err = new Error('Please login or sign up to use the cart.')
     err.status = 401
     next(err)
@@ -34,79 +11,97 @@ router.post('/', async(req, res,next) => {
   }
   try {
     let shoppingCart = await req.user.getTransactions({
-      where: { isCart: true },
-      })
+      where: {
+        isCart: true
+      },
+      include: [{model: TransactionItem}]
+    })
+    res.json(shoppingCart)
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.post('/', async (req, res, next) => {
+  if (!req.user) {
+    const err = new Error('Please login or sign up to use the cart.')
+    err.status = 401
+    next(err)
+    return
+  }
+  try {
+    let shoppingCart = await req.user.getTransactions({
+      where: {isCart: true}
+    })
 
     if (!shoppingCart.length) {
-       shoppingCart = await Transaction.create({userId: req.user.id, date: Date.now()})
+      shoppingCart = await Transaction.create({
+        userId: req.user.id,
+        date: Date.now()
+      })
     }
     req.body.transactionId = shoppingCart[0].dataValues.id
     let updatedItem = await TransactionItem.update(req.body)
     res.json(updatedItem)
-   }
-   catch (err){
-     next(err)
-   }
+  } catch (err) {
+    next(err)
+  }
 })
 
-
-router.put('/', async(req, res, next) => {
-  if (!req.user){
+router.put('/', async (req, res, next) => {
+  if (!req.user) {
     const err = new Error('Please login or sign up to use the cart.')
     err.status = 401
     next(err)
     return
   }
- try {
-  //req.body will need to include - venueId, quantity
-  // let itemToUpdate = await req.user.getTransactions({
-  //   where: {
-  //     isCart: true,
-  //    },include: [{model: TransactionItem,
-  //   where: {venueId: req.body.venueId}}]
-  //   })
-    let updatedItem = await TransactionItem.update({
-      quantity: req.body.quantity},{
-      where: {
-        venueId: req.body.venueId,
-
-    }, include: [{model: Transaction,
-      where: {userId: req.user.id, isCart: true}}]
-  })
+  try {
+    let updatedItem = await TransactionItem.update(
+      {
+        quantity: req.body.quantity
+      },
+      {
+        where: {
+          venueId: req.body.venueId
+        },
+        include: [
+          {
+            model: Transaction,
+            where: {
+              userId: req.user.id,
+              isCart: true
+            }
+          }
+        ]
+      }
+    )
     res.json(updatedItem)
- } catch (error) {
-   next(error)
- }
+  } catch (error) {
+    next(error)
+  }
 })
 
-router.delete('/', async(req, res, next) => {
-  if (!req.user){
+router.delete('/:id', async (req, res, next) => {
+  if (!req.user) {
     const err = new Error('Please login or sign up to use the cart.')
     err.status = 401
     next(err)
     return
   }
- try {
-  //req.body will need to include - venueId, quantity
-  let itemToUpdate = await req.user.getTransactions({
-    where: {
-      isCart: true,
-     },include: [{model: TransactionItem,
-    where: {venueId: req.body.venueId}}]
+  try {
+    let deletedItem = await TransactionItem.destroy({
+      where: {
+        id: req.params.id
+      }
     })
-    itemToUpdate.quantity = req.body.quantity
-    letItem = await TransactionItem.delete({
-      where: {
-        venueId: req.body.venueId
-    }
-  })
-    res.json(updatedItem)
- } catch (error) {
-   next(error)
- }
+
+    res.json(deletedItem)
+  } catch (error) {
+    next(error)
+  }
 })
 
-
+// THIS IS OLD CODE
 // router.post('/', async(req, res, next) => {
 //   if (!req.user){
 //     const err = new Error('Please log in or sign up to use the cart.')
@@ -143,3 +138,37 @@ router.delete('/', async(req, res, next) => {
 //   }
 //   res.json(createdItem)
 // })
+
+
+router.post('/', async (req, res, next) => {
+  if (!req.user) {
+    const err = new Error('Please login or sign up to use the cart.')
+    err.status = 401
+    next(err)
+    return
+  }
+  try {
+    let postedItem = await TransactionItem.create(
+      {
+        quantity: req.body.quantity
+      },
+      {
+        where: {
+          venueId: req.body.venueId
+        },
+        include: [
+          {
+            model: Transaction,
+            where: {
+              userId: req.user.id,
+              isCart: true
+            }
+          }
+        ]
+      }
+    )
+    res.json(updatedItem)
+  } catch (error) {
+    next(error)
+  }
+})
