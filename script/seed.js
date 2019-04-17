@@ -67,10 +67,10 @@ async function seed() {
 
   console.log(`seeded ${venues.length} venues`)
   const transactions = await Promise.all([
-    Transaction.create({date: Date.now(),isCart: true, userId: 1, id: 2}),
-    Transaction.create({date: Date.now(),isCart: false, userId: 2, id: 1}),
-    Transaction.create({date: Date.now(),isCart: true, userId: 2, id: 4}),
-    Transaction.create({date: Date.now(),isCart: false, userId: 1, id: 3}),
+    Transaction.create({date: Date.now(),isCart: true, userId: 1}),
+    Transaction.create({date: Date.now(),isCart: false, userId: 2}),
+    Transaction.create({date: Date.now(),isCart: true, userId: 2}),
+    Transaction.create({date: Date.now(),isCart: false, userId: 1}),
   ])
   console.log(`seeded ${transactions.length} transactions`)
 
