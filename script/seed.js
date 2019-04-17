@@ -1,7 +1,7 @@
 'use strict'
 
 const db = require('../server/db')
-const {User, Venue} = require('../server/db/models')
+const {User, Venue, TransactionItem, Transaction} = require('../server/db/models')
 
 async function seed() {
   await db.sync({force: true})
@@ -17,9 +17,9 @@ async function seed() {
   let offices = []
   let eventSpaces = []
   let studios = []
-  
+
   function createOffice(num){
-  
+
   for (let i = 0; i < num; i++){
     offices[i] = {
       name: `Office ${i}`,
@@ -28,11 +28,11 @@ async function seed() {
       type: 'Office',
       capacity: 20
     }
-  
+
   }
   }
   function createEventSpace(num){
-  
+
   for (let i = 0; i < num; i++){
     eventSpaces[i] = {
       name: `Event Space ${i}`,
@@ -41,11 +41,11 @@ async function seed() {
       type: 'Event-Space',
       capacity: 200
     }
-  
+
   }
   }
   function createStudio(num){
-  
+
   for (let i = 0; i < num; i++){
     studios[i] = {
       name: `Studio ${i}`,
@@ -54,7 +54,7 @@ async function seed() {
       type: 'Studio',
       capacity: 5
     }
-  
+
   }
   }
 
@@ -66,8 +66,26 @@ async function seed() {
   await Promise.all(venuePromises)
 
   console.log(`seeded ${venues.length} venues`)
+  const transactions = await Promise.all([
+    Transaction.create({date: Date.now(),isCart: true, userId: 1, id: 2}),
+    Transaction.create({date: Date.now(),isCart: false, userId: 2, id: 1}),
+    Transaction.create({date: Date.now(),isCart: true, userId: 2, id: 4}),
+    Transaction.create({date: Date.now(),isCart: false, userId: 1, id: 3}),
+  ])
+  console.log(`seeded ${transactions.length} transactions`)
+
+  const transactionItems = await Promise.all([
+    TransactionItem.create({quantity: 1, purchasePrice: 500, transactionId: 4, venueId: 1}),
+    TransactionItem.create({quantity: 2, purchasePrice: 250, transactionId: 2, venueId: 2}),
+    TransactionItem.create({quantity: 1, purchasePrice: 100, transactionId: 2, venueId: 3}),
+    TransactionItem.create({quantity: 3, purchasePrice: 150, transactionId: 1, venueId: 9}),
+    TransactionItem.create({quantity: 1, purchasePrice: 300, transactionId: 3, venueId: 1}),
+  ])
+  console.log(`seeded ${transactionItems.length} transactionItems`)
+
 
   console.log(`seeded successfully`)
+
 }
 
 // We've separated the `seed` function from the `runSeed` function.
@@ -96,3 +114,4 @@ if (module === require.main) {
 
 // we export the seed function for testing purposes (see `./seed.spec.js`)
 module.exports = seed
+
