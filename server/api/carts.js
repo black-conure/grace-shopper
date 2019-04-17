@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {TransactionItem} = require('../db/models')
+const {TransactionItem, Venue} = require('../db/models')
 module.exports = router
 
 router.get('/', async(req, res, next) => {
@@ -25,39 +25,47 @@ router.get('/', async(req, res, next) => {
   }
 })
 
-router.post('/', async(req, res, next) => {
+router.post('/checkout', async(req, res, next) => {
   if (!req.user){
     const err = new Error('Please log in or sign up to use the cart.')
     err.status = 401
     next(err)
     return
   }
-  if (!req.body.venueId || !req.body.quantity){
-    const err = new Error('Venue ID and quantity must be specified.')
-    err.status = 400
+  let shoppingCartArr = null
+  try {
+    shoppingCartArr = await req.user.getTransactions(
+      {
+        where: {
+          isCart: true,
+        },
+        include: [{model: TransactionItem}]
+        }
+    )
+  }
+  catch (err){
     next(err)
     return
   }
-  let createdItem = null
-  try {
-    createdItem = await CartItem.create({
-      userId: req.user.id,
-      venueId: req.body.venueId,
-      quantity: req.body.quantity
-    },{
-      returning: true
-    })
-  }
-  catch (err){
-    if (err.name === 'SequelizeUniqueConstraintError'){
-      res.status(403).send(
-        'That venue is already in your cart.'
-      )
+  if (
+    shoppingCartArr.length > 0 && 
+    shoppingCartArr[0]['transaction-items'].length > 0
+  ){
+    const cart = shoppingCartArr[0]
+    try {
+      await cart.update({isCart: false})
+      for (let ti of cart['transaction-items']){
+        const venue = await Venue.findByPk(ti.venueId)
+        await ti.update({purchasePrice: venue.price})
+      }
     }
-    else {
+    catch (err){
       next(err)
+      return
     }
-    return
+    res.send('Purchase complete!')
   }
-  res.json(createdItem)
+  else {
+    res.status(403).send('Your shopping cart is empty.')
+  }
 })
