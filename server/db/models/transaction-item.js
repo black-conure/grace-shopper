@@ -9,13 +9,14 @@ const TransactionItem = db.define('transaction-item', {
       min: 1
     }
   },
-  price: {
+  purchasePrice: {
     type: Sequelize.INTEGER,
-    allowNull: false,
+    allowNull: true,
     validate: {
       min: 0
     }
   }
+
 })
 
 module.exports = TransactionItem
