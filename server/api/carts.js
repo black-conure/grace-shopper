@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {CartItem} = require('../db/models')
+const {TransactionItem} = require('../db/models')
 module.exports = router
 
 router.get('/', async(req, res, next) => {
@@ -9,15 +9,20 @@ router.get('/', async(req, res, next) => {
     next(err)
     return
   }
-  let venues = null
   try {
-    venues = await req.user.getVenues()
+   let shoppingCart = await req.user.getTransactions(
+     {
+      where: {
+        isCart: true,
+      },
+      include: [{model: TransactionItem}]
+      }
+    )
+    res.json(shoppingCart)
   }
   catch (err){
     next(err)
-    return
   }
-  res.json(venues)
 })
 
 router.post('/', async(req, res, next) => {

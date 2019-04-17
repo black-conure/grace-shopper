@@ -2,7 +2,7 @@ const User = require('./user')
 const Venue = require('./venue')
 const Transaction = require('./transaction')
 const TransactionItem = require('./transaction-item')
-const CartItem = require('./cart-item')
+// const CartItem = require('./cart-item')
 
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -13,14 +13,12 @@ const CartItem = require('./cart-item')
 User.hasMany(Transaction)
 Transaction.belongsTo(User)
 
-Transaction.hasMany(TransactionItem)
+Transaction.belongsToMany(Venue, {through: TransactionItem})
+Venue.belongsToMany(Transaction, {through: TransactionItem})
+
 TransactionItem.belongsTo(Transaction)
+Transaction.hasMany(TransactionItem)
 
-Venue.hasMany(TransactionItem)
-TransactionItem.belongsTo(Venue)
-
-User.belongsToMany(Venue, {through: CartItem})
-Venue.belongsToMany(User, {through: CartItem})
 
 /**
  * We'll export all of our models here, so that any time a module needs a model,
@@ -33,5 +31,4 @@ module.exports = {
   Venue,
   Transaction,
   TransactionItem,
-  CartItem
 }
