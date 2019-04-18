@@ -113,7 +113,7 @@ router.put('/', async (req, res, next) => {
     return
   }
   try {
-    let updatedItem = await TransactionItem.update(
+    let [updatedItem] = await TransactionItem.update(
       {
         quantity: req.body.quantity
       },
@@ -129,7 +129,8 @@ router.put('/', async (req, res, next) => {
               isCart: true
             }
           }
-        ]
+        ],
+        returning: true
       }
     )
     res.json(updatedItem)
