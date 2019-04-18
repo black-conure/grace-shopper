@@ -29,20 +29,32 @@ router.post('/', async (req, res, next) => {
     next(err)
     return
   }
+  if (!req.body.quantity || !req.body.venueId){
+    const err = new Error('Quantity and venue id are required.')
+    err.status = 400
+    next(err)
+    return
+  }
   try {
-    let shoppingCart = await req.user.getTransactions({
-      where: {isCart: true}
+    const [shoppingCart] = await Transaction.findOrCreate({
+      where: {
+        isCart: true,
+        userId: req.user.id
+      }
     })
 
-    if (!shoppingCart.length) {
-      shoppingCart = await Transaction.create({
-        userId: req.user.id,
-        date: Date.now()
-      })
-    }
-    req.body.transactionId = shoppingCart[0].dataValues.id
-    let createdItem = await TransactionItem.create(req.body)
-    res.json(createdItem)
+    const transactionId = shoppingCart.dataValues.id
+    let [createdItem] = await TransactionItem.upsert({
+      quantity: req.body.quantity,
+      venueId: req.body.venueId,
+      transactionId: transactionId
+    }, {returning: true})
+    let cartInfo = await TransactionItem.findByPk(createdItem.id, {
+      include: [{
+        model: Venue
+      }]
+    })
+    res.json(cartInfo)
   } catch (err) {
     next(err)
   }

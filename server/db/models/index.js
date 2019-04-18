@@ -19,6 +19,8 @@ Venue.belongsToMany(Transaction, {through: TransactionItem})
 TransactionItem.belongsTo(Transaction)
 Transaction.hasMany(TransactionItem)
 
+TransactionItem.belongsTo(Venue)
+Venue.hasMany(TransactionItem)
 
 /**
  * We'll export all of our models here, so that any time a module needs a model,
