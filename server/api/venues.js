@@ -14,7 +14,7 @@ router.get('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
   try {
     const id = req.params.id
-    const venue = await Venue.findOneByPk(id)
+    const venue = await Venue.findByPk(id)
     res.json(venue)
   } catch (err) {
     next(err)
