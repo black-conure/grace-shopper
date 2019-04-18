@@ -3,6 +3,8 @@ import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
 
+import {Button, Form, Container, Icon} from 'semantic-ui-react'
+
 /**
  * COMPONENT
  */
@@ -10,27 +12,50 @@ const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props
 
   return (
-    <div>
+    <Form>
       <form onSubmit={handleSubmit} name={name}>
+        {name === 'signup' ? (
+          <Form.Group widths="equal">
+            <Form.Field>
+              <label htmlFor="firstname">
+                <small>First Name</small>
+              </label>
+              <input name="firstname" type="text" />
+            </Form.Field>
+            <Form.Field>
+              <label htmlFor="lastname">
+                <small>Last Name</small>
+              </label>
+              <input name="lastname" type="text" />
+            </Form.Field>
+          </Form.Group>
+        ) : null}
+        <Form.Group widths="equal">
+          <Form.Field>
+            <label htmlFor="email">
+              <small>Email</small>
+            </label>
+            <input name="email" type="text" />
+          </Form.Field>
+          <Form.Field>
+            <label htmlFor="password">
+              <small>Password</small>
+            </label>
+            <input name="password" type="password" />
+          </Form.Field>
+        </Form.Group>
         <div>
-          <label htmlFor="email">
-            <small>Email</small>
-          </label>
-          <input name="email" type="text" />
-        </div>
-        <div>
-          <label htmlFor="password">
-            <small>Password</small>
-          </label>
-          <input name="password" type="password" />
-        </div>
-        <div>
-          <button type="submit">{displayName}</button>
+          <Button type="submit">{displayName}</Button>
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
-      <a href="/auth/google">{displayName} with Google</a>
-    </div>
+      <a href="/auth/google">
+        <font size="1">
+          {displayName} with {'                  '}
+        </font>
+        <Icon name="google" />
+      </a>
+    </Form>
   )
 }
 
