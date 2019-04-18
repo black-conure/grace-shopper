@@ -4,27 +4,52 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
 
+import {Menu, Grid} from 'semantic-ui-react'
+
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div>
-    <h1>GRACEFUL VENUES</h1>
-    <nav>
-      {isLoggedIn ? (
-        <Fragment>
-          {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <a href="#" onClick={handleClick}>
-            Logout
-          </a>
-        </Fragment>
-      ) : (
-        <Fragment>
-          {/* The navbar will show these links before you log in */}
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
-        </Fragment>
-      )}
-      <Link to="/venues">All Venues</Link>
-    </nav>
+    <Menu color={'blue'} inverted>
+      <Grid columns={4}>
+        <Grid.Row stretched>
+          {isLoggedIn ? (
+            <Fragment>
+              {/* The navbar will show these links after you log in */}
+              <Menu.Item>
+                <Link to="/home">Home</Link>
+              </Menu.Item>
+              <Menu.Item>
+                <a href="#" onClick={handleClick}>
+                  Logout
+                </a>
+              </Menu.Item>
+            </Fragment>
+          ) : (
+            <Fragment>
+              {/* The navbar will show these links before you log in */}
+              <Grid.Column>
+                <Menu.Item>
+                  <Link to="/login">Login</Link>
+                </Menu.Item>
+              </Grid.Column>
+              <Grid.Column>
+                <Menu.Item>
+                  <Link to="/signup">Sign Up</Link>
+                </Menu.Item>
+              </Grid.Column>
+            </Fragment>
+          )}
+          <Grid.Column>
+            <Menu.Item>
+              <Link to="/venues">All Venues</Link>
+            </Menu.Item>
+          </Grid.Column>
+
+          <Grid.Column>
+            <Menu.Item>Graceful Venues</Menu.Item>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
+    </Menu>
     <hr />
   </div>
 )
