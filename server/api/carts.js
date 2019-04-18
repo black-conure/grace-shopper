@@ -41,8 +41,8 @@ router.post('/', async (req, res, next) => {
       })
     }
     req.body.transactionId = shoppingCart[0].dataValues.id
-    let updatedItem = await TransactionItem.create(req.body)
-    res.json(updatedItem)
+    let createdItem = await TransactionItem.create(req.body)
+    res.json(createdItem)
   } catch (err) {
     next(err)
   }
