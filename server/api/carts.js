@@ -14,9 +14,17 @@ router.get('/', async (req, res, next) => {
       where: {
         isCart: true
       },
-      include: [{model: TransactionItem}]
+      include: [{model: TransactionItem, include: [{
+          model: Venue
+        }]
+      }]
     })
-    res.json(shoppingCart)
+    if (shoppingCart.length > 0){
+      res.json(shoppingCart[0]['transaction-items'])
+    }
+    else {
+      res.json([])
+    }
   } catch (err) {
     next(err)
   }
@@ -59,7 +67,6 @@ router.post('/', async (req, res, next) => {
     next(err)
   }
 })
-
 
 router.post('/checkout', async(req, res, next) => {
   if (!req.user){
@@ -129,7 +136,8 @@ router.put('/', async (req, res, next) => {
               isCart: true
             }
           }
-        ]
+        ],
+        returning: true
       }
     )
     res.json(updatedItem)
@@ -146,14 +154,14 @@ router.delete('/:id', async (req, res, next) => {
     return
   }
   try {
-    let deletedItem = await TransactionItem.destroy({
+    await TransactionItem.destroy({
       where: {
-        id: req.params.id
+        venueId: req.params.id
       }
     })
-
-    res.json(deletedItem)
   } catch (error) {
     next(error)
+    return
   }
+  res.sendStatus(204)
 })
