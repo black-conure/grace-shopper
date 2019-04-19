@@ -30,6 +30,16 @@ export const me = () => async dispatch => {
   }
 }
 
+// Newly added, not yet functional or connected anywhere
+export const fetchUserData = () => async dispatch => {
+  try {
+    const res = await axios.get('/api/users/me')
+    dispatch(getUser(res.data || defaultUser))
+  } catch (err) {
+    console.error(err)
+  }
+}
+
 export const auth = (email, password, method) => async dispatch => {
   let res
   try {
