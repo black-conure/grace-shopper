@@ -20,6 +20,7 @@ class AllVenues extends Component {
           {this.props.venues.map(venue => {
             return (
               <Card key={venue.id}>
+              <Link to={`venues/${venue.id}`}>
                 <Image />
                 <Card.Header>{venue.name}</Card.Header>
                 <Card.Meta>Type: {venue.type}</Card.Meta>
@@ -30,9 +31,7 @@ class AllVenues extends Component {
                   <h4>Capacity: {venue.capacity}</h4>
                 </Card.Description>
                 <p>Address: {venue.address}</p>
-                <button
-                  type="button" onClick={() => this.handleAddToCart(venue.id)}
-                >Add to Cart</button>
+                </Link>
               </Card>
             )
           })}
