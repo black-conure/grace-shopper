@@ -1,9 +1,15 @@
 const axios = require('axios')
 
+const FETCHED_CART = 'FETCHED_CART'
 const ADDED_TO_CART = 'ADDED_TO_CART'
 const EDITED_CART = 'EDITED_CART'
 const DELETED_FROM_CART = 'DELETED_FROM_CART'
 const CHECKEDOUT = 'CHECKEDOUT'
+
+export const fetchedCart = (cartItems) => ({
+  type: FETCHED_CART,
+  cartItems
+})
 
 export const addedToCart = (venue, quantity) => ({
   type: ADDED_TO_CART,
@@ -28,6 +34,20 @@ export const checkedOut = () => ({
 
 // Thunks
 
+export const fetchCart = () => async(dispatch) => {
+  try {
+    const {data} = await axios.get('/api/carts')
+    const cartItems = data.map(ti => ({
+      venue: ti.venue,
+      quantity: ti.quantity
+    }))
+    dispatch(fetchedCart(cartItems))
+  } 
+  catch (error) {
+    console.error(error)
+  }
+}
+
 export const addToCart = (venueId, quantity) => async(dispatch) => {
   try {
     const {data} = await axios.post('/api/carts', {
@@ -43,7 +63,7 @@ export const addToCart = (venueId, quantity) => async(dispatch) => {
 
 export const editCart = (venueId, quantity) => async(dispatch) => {
   try {
-    const {data} = await axios.put('/api/carts', {
+    const {data} = await axios.post('/api/carts', {
       venueId,
       quantity
     })
@@ -78,6 +98,9 @@ const initialState = []
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    case FETCHED_CART: {
+      return action.cartItems
+    }
     case ADDED_TO_CART: {
       const restOfCart = state.filter(item => item.venue.id !== action.venue.id)
       return [{quantity: action.quantity, venue: action.venue}, ...restOfCart]
