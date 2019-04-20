@@ -9,7 +9,7 @@ import {Menu, Grid} from 'semantic-ui-react'
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div>
     <Menu color={'blue'} inverted>
-      <Grid columns={4}>
+      <Grid columns={6}>
         <Grid.Row stretched>
           {isLoggedIn ? (
             <Fragment>
@@ -46,6 +46,18 @@ const Navbar = ({handleClick, isLoggedIn}) => (
 
           <Grid.Column>
             <Menu.Item>Graceful Venues</Menu.Item>
+          </Grid.Column>
+
+          <Grid.Column>
+            <Menu.Item>
+              <Link to="/cart">Shopping Cart</Link>
+            </Menu.Item>
+          </Grid.Column>
+
+          <Grid.Column>
+            <Menu.Item>
+              <Link to="/userProfile">User Profile</Link>
+            </Menu.Item>
           </Grid.Column>
         </Grid.Row>
       </Grid>
