@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react'
 import {connect} from 'react-redux'
-import {editCart, deleteFromCart} from '../store/cart'
+import {editCart, deleteFromCart, addToLocalCart, deleteFromLocalCart} from '../store/cart'
 import {Button, Card, Image} from 'semantic-ui-react'
 import {Link} from 'react-router-dom'
 
@@ -28,13 +28,23 @@ export class CartItem extends Component {
     })
   }
   handleAccept(){
-    this.props.editCart(this.props.venue.id, this.state.itemQuantity)
+    if (this.props.isLoggedIn){
+      this.props.editCart(this.props.venue.id, this.state.itemQuantity)
+    }
+    else {
+      this.props.editLocalCart(this.props.venue, this.state.itemQuantity)
+    }
     this.setState({
       isEditing: false
     })
   }
   handleDelete(){
-    this.props.deleteFromCart(this.props.venue.id)
+    if (this.props.isLoggedIn){
+      this.props.deleteFromCart(this.props.venue.id)
+    }
+    else {
+      this.props.deleteFromLocalCart(this.props.venue.id)
+    }
   }
   render(){
     return (
@@ -68,9 +78,15 @@ export class CartItem extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  isLoggedIn: !!state.user.id
+})
+
 const mapDispatchToProps = dispatch => ({
   editCart: (venueId, quantity) => dispatch(editCart(venueId, quantity)),
   deleteFromCart: venueId => dispatch(deleteFromCart(venueId)),
+  editLocalCart: (venue, quantity) => dispatch(addToLocalCart(venue, quantity)),
+  deleteFromLocalCart: venueId => dispatch(deleteFromLocalCart(venueId))
 })
 
-export default connect(null, mapDispatchToProps)(CartItem)
+export default connect(mapStateToProps, mapDispatchToProps)(CartItem)

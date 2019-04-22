@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {fetchCart, checkout} from '../store/cart'
+import {fetchCart, fetchLocalCart, checkout} from '../store/cart'
 import CartItem from './CartItem'
 class Cart extends Component {
   constructor(props){
@@ -8,16 +8,25 @@ class Cart extends Component {
     this.handleCheckout = this.handleCheckout.bind(this)
   }
   componentDidMount(){
-    this.props.fetchCart()
+    if (this.props.isLoggedIn){
+      this.props.fetchCart()
+    }
+    else {
+      this.props.fetchLocalCart()
+    }
   }
   handleCheckout(){
     this.props.checkout()
   }
   render(){
+    let cart = this.props.localCart
+    if (this.props.isLoggedIn){
+      cart = this.props.cart
+    }
     return (
       <div>
         <h2>Your Shopping Cart</h2>
-        {this.props.cart.map(cartItem => (
+        {cart.map(cartItem => (
           <CartItem
             venue={cartItem.venue} quantity={cartItem.quantity}
             key={cartItem.venue.id}
@@ -30,11 +39,14 @@ class Cart extends Component {
 }
 
 const mapStateToProps = state => ({
-  cart: state.cart
+  cart: state.cart.cart,
+  localCart: state.cart.localCart,
+  isLoggedIn: !!state.user.id
 })
 
 const mapDispatchToProps = dispatch => ({
   fetchCart: () => dispatch(fetchCart()),
+  fetchLocalCart: () => dispatch(fetchLocalCart()),
   checkout: () => dispatch(checkout())
 })
 

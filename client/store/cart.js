@@ -218,7 +218,7 @@ export default function(state = initialState, action) {
       }
     }
     case ADDED_TO_LOCAL_CART: {
-      const restOfLocalCart = state.cart.filter(
+      const restOfLocalCart = state.localCart.filter(
         item => item.venue.id !== action.venue.id
       )
       return {
@@ -229,7 +229,7 @@ export default function(state = initialState, action) {
       }
     }
     case DELETED_FROM_LOCAL_CART: {
-      const newLocalCart = state.cart.filter(
+      const newLocalCart = state.localCart.filter(
         item => item.venue.id !== action.venueId
       )
       return {
