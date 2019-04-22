@@ -10,6 +10,11 @@ const sessionStore = new SequelizeStore({db})
 const PORT = process.env.PORT || 8080
 const app = express()
 const socketio = require('socket.io')
+// const SERVER_CONFIGS = require('./stripe-backend/constants/server');
+// const configureServer = require('./stripe-backend/server');
+// const configureRoutes = require('./stripe-backend/routes');
+
+
 module.exports = app
 
 // This is a global Mocha hook, used for resource cleanup.
@@ -63,6 +68,9 @@ const createApp = () => {
   app.use(passport.initialize())
   app.use(passport.session())
 
+  // configureServer(app);
+  // configureRoutes(app);
+
   // auth and api routes
   app.use('/auth', require('./auth'))
   app.use('/api', require('./api'))
@@ -93,6 +101,8 @@ const createApp = () => {
     res.status(err.status || 500).send(err.message || 'Internal server error.')
   })
 }
+
+
 
 const startListening = () => {
   // start listening (and create a 'server' object representing our server)
