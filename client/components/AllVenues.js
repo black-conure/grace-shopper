@@ -21,7 +21,7 @@ class AllVenues extends Component {
             return (
               <Card key={venue.id}>
               <Link to={`venues/${venue.id}`}>
-                <Image />
+                <Image src={venue.imageUrl} />
                 <Card.Header>{venue.name}</Card.Header>
                 <Card.Meta>Type: {venue.type}</Card.Meta>
                 <Card.Description>
