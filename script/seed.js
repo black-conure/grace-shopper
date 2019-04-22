@@ -14,53 +14,249 @@ async function seed() {
 
   console.log(`seeded ${users.length} users`)
 
-  let offices = []
-  let eventSpaces = []
-  let studios = []
+  let offices = [ { name: 'Office 0',
+  imageUrl: 'http://www.contemporist.com/wp-content/uploads/2011/09/ki_220911_09.jpg',
+  description:
+   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
+  address: '0 Main Street',
+  price: 0,
+  type: 'Office',
+  capacity: 20 },
+{ name: 'Office 1',
+  imageUrl: 'https://assets.regus.com/images/nwp/homepage-product-office-space.jpg',
+  description:
+   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
+  address: '1 Main Street',
+  price: 25,
+  type: 'Office',
+  capacity: 20 },
+{ name: 'Office 2',
+  imageUrl: 'https://www.intheblack.com/~/media/intheblack/allimages/sponsored-content/2018/dexus-office-space.jpg',
+  description:
+   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
+  address: '2 Main Street',
+  price: 50,
+  type: 'Office',
+  capacity: 20 },
+{ name: 'Office 3',
+  imageUrl: 'https://assets.regus.com/images/nwp/homepage-product-office-space.jpg',
+  description:
+   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
+  address: '3 Main Street',
+  price: 75,
+  type: 'Office',
+  capacity: 20 },
+{ name: 'Office 4',
+  imageUrl: 'https://assets.regus.com/images/nwp/homepage-product-co-working.jpg',
+  description:
+   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
+  address: '4 Main Street',
+  price: 100,
+  type: 'Office',
+  capacity: 20 },
+{ name: 'Office 5',
+  imageUrl: 'https://assets.regus.com/images/nwp/homepage-product-meeting-rooms.jpg',
+  description:
+   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
+  address: '5 Main Street',
+  price: 125,
+  type: 'Office',
+  capacity: 20 },
+{ name: 'Office 6',
+  imageUrl: 'https://assets.regus.com/images/nwp/homepage-product-lounges.jpg',
+  description:
+   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
+  address: '6 Main Street',
+  price: 150,
+  type: 'Office',
+  capacity: 20 },
+{ name: 'Office 7',
+  imageUrl: 'https://yourmactech.com.au/wp-content/uploads/2017/11/office-mac-365-macbook-imac-1110x530.jpg',
+  description:
+   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
+  address: '7 Main Street',
+  price: 175,
+  type: 'Office',
+  capacity: 20 },
+{ name: 'Office 8',
+  imageUrl: 'https://files.steinhafels.com/up/367ad987-40ca-4393-ac07-be07e3bff5f0_Office_1140.jpg',
+  description:
+   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
+  address: '8 Main Street',
+  price: 200,
+  type: 'Office',
+  capacity: 20 },
+{ name: 'Office 9',
+  imageUrl: 'https://2i4rql3xfq4g2wu3ic47wjri-wpengine.netdna-ssl.com/wp-content/gallery/thorton-office-2/Thorton-office-1a.jpg',
+  description:
+   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
+  address: '9 Main Street',
+  price: 225,
+  type: 'Office',
+  capacity: 20 } ]
 
-  function createOffice(num){
+  let eventSpaces = [ { name: 'Event Space 0',
+  imageUrl:'https://www.ioimprov.com/files/2016/10/iO-Event-Space-5-800x533.jpg',
+  description:
+   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
+  address: '0 Fulton Street',
+  price: 0,
+  type: 'Event-Space',
+  capacity: 200 },
+{ name: 'Event Space 1',
+  imageUrl: 'https://conferenceeventspace.files.wordpress.com/2011/08/event-space-nyc1.jpg',
+  description:
+   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
+  address: '1 Fulton Street',
+  price: 100,
+  type: 'Event-Space',
+  capacity: 200 },
+{ name: 'Event Space 2',
+  imageUrl: 'http://www.stage37events.com/wp-content/gallery/venue-tour-main-event-sace/main-space-front-r-1.jpg',
+  description:
+   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
+  address: '2 Fulton Street',
+  price: 200,
+  type: 'Event-Space',
+  capacity: 200 },
+{ name: 'Event Space 3',
+  imageUrl: 'https://facultyhouse.columbia.edu/files/facultyhouse/rooms/DSC_9442.JPG',
+  description:
+   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
+  address: '3 Fulton Street',
+  price: 300,
+  type: 'Event-Space',
+  capacity: 200 },
+{ name: 'Event Space 4',
+  imageUrl: 'https://www.ioimprov.com/files/2016/10/iO-Event-Space-5-800x533.jpg',
+  description:
+   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
+  address: '4 Fulton Street',
+  price: 400,
+  type: 'Event-Space',
+  capacity: 200 },
+{ name: 'Event Space 5',
+  imageUrl: 'https://www.ioimprov.com/files/2016/10/iO-Event-Space-5-800x533.jpg',
+  description:
+   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
+  address: '5 Fulton Street',
+  price: 500,
+  type: 'Event-Space',
+  capacity: 200 },
+{ name: 'Event Space 6',
+  imageUrl: 'https://www.ioimprov.com/files/2016/10/iO-Event-Space-5-800x533.jpg',
+  description:
+   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
+  address: '6 Fulton Street',
+  price: 600,
+  type: 'Event-Space',
+  capacity: 200 },
+{ name: 'Event Space 7',
+  imageUrl: 'http://www.stage37events.com/wp-content/gallery/venue-tour-main-event-sace/main-space-front-r-1.jpg',
+  description:
+   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
+  address: '7 Fulton Street',
+  price: 700,
+  type: 'Event-Space',
+  capacity: 200 },
+{ name: 'Event Space 8',
+  imageUrl: 'https://conferenceeventspace.files.wordpress.com/2011/08/event-space-nyc1.jpg',
+  description:
+   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
+  address: '8 Fulton Street',
+  price: 800,
+  type: 'Event-Space',
+  capacity: 200 },
+{ name: 'Event Space 9',
+  imageUrl: 'https://www.ioimprov.com/files/2016/10/iO-Event-Space-5-800x533.jpg',
+  description:
+   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
+  address: '9 Fulton Street',
+  price: 900,
+  type: 'Event-Space',
+  capacity: 200 } ]
 
-  for (let i = 0; i < num; i++){
-    offices[i] = {
-      name: `Office ${i}`,
-      address: `${i} Main Street`,
-      price: i*25,
-      type: 'Office',
-      capacity: 20
-    }
+  let studios = [ { name: 'Studio 0',
+  imageUrl: 'https://i.pinimg.com/originals/32/62/2c/32622cbcd26afcdc5b30477a629a8c62.jpg',
+  description:
+   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
+  address: '0 Wall Street',
+  price: 0,
+  type: 'Studio',
+  capacity: 5 },
+{ name: 'Studio 1',
+  imageUrl: 'https://2aef8o1zc4z01su5y33av6tv-wpengine.netdna-ssl.com/wp-content/uploads/2016/04/Control_Rm_Final-1.jpg',
+  description:
+   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
+  address: '1 Wall Street',
+  price: 50,
+  type: 'Studio',
+  capacity: 5 },
+{ name: 'Studio 2',
+  imageUrl: 'https://www.sneakybig.com/wp-content/uploads/studio-hero-recording-studio.jpg',
+  description:
+   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
+  address: '2 Wall Street',
+  price: 100,
+  type: 'Studio',
+  capacity: 5 },
+{ name: 'Studio 3',
+  imageUrl: 'https://static1.squarespace.com/static/52f55e64e4b0030add83011c/t/5c2cf9b10ebbe85745026aa1/1546451426620/',
+  description:
+   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
+  address: '3 Wall Street',
+  price: 150,
+  type: 'Studio',
+  capacity: 5 },
+{ name: 'Studio 4',
+  imageUrl: 'http://studio-a-recording.com/wp-content/uploads/2010/12/Control-Room_03.02-768x512.jpg',
+  description:
+   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
+  address: '4 Wall Street',
+  price: 200,
+  type: 'Studio',
+  capacity: 5 },
+{ name: 'Studio 5',
+  imageUrl: 'http://studio-a-recording.com/wp-content/uploads/2010/12/Booth_02.02-768x512.jpg',
+  description:
+   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
+  address: '5 Wall Street',
+  price: 250,
+  type: 'Studio',
+  capacity: 5 },
+{ name: 'Studio 6',
+  imageUrl: 'https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2017/7/26/0/uo2017_art-studio-01-wide-KB2A7554_h.jpg.rend.hgtvcom.966.644.suffix/1501095431818.jpeg',
+  description:
+   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
+  address: '6 Wall Street',
+  price: 300,
+  type: 'Studio',
+  capacity: 5 },
+{ name: 'Studio 7',
+  imageUrl: 'https://files.thefunpalette.com/media/djangocms_parallax/1255a234-46aa-11e8-baed-42010af00f06.jpg.1400x600_q85_crop.jpg',
+  description:
+   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
+  address: '7 Wall Street',
+  price: 350,
+  type: 'Studio',
+  capacity: 5 },
+{ name: 'Studio 8',
+  imageUrl: 'https://www.plumplumcreations.com/wp-content/uploads/2017/03/studio_1.jpg',
+  description:
+   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
+  address: '8 Wall Street',
+  price: 400,
+  type: 'Studio',
+  capacity: 5 },
+{ name: 'Studio 9',
+  imageUrl: 'https://i.pinimg.com/originals/32/62/2c/32622cbcd26afcdc5b30477a629a8c62.jpg',
+  description:
+   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
+  address: '9 Wall Street',
+  price: 450,
+  type: 'Studio',
+  capacity: 5 } ]
 
-  }
-  }
-  function createEventSpace(num){
-
-  for (let i = 0; i < num; i++){
-    eventSpaces[i] = {
-      name: `Event Space ${i}`,
-      address: `${i} Fulton Street`,
-      price: i*100,
-      type: 'Event-Space',
-      capacity: 200
-    }
-
-  }
-  }
-  function createStudio(num){
-
-  for (let i = 0; i < num; i++){
-    studios[i] = {
-      name: `Studio ${i}`,
-      address: `${i} Wall Street`,
-      price: i*50,
-      type: 'Studio',
-      capacity: 5
-    }
-
-  }
-  }
-
-  createOffice(10)
-  createEventSpace(10)
-  createStudio(10)
   const venues = [...offices, ...eventSpaces, ...studios]
   const venuePromises = venues.map(venue => Venue.create(venue))
   await Promise.all(venuePromises)

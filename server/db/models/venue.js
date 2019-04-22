@@ -9,6 +9,7 @@ const Venue = db.define('venue', {
       notEmpty: true
     }
   },
+
   description: {
     type: Sequelize.TEXT,
     allowNull: true
@@ -16,7 +17,7 @@ const Venue = db.define('venue', {
   },
   imageUrl : {
     type: Sequelize.STRING,
-
+    defaultValue: 'https://i.pinimg.com/originals/32/62/2c/32622cbcd26afcdc5b30477a629a8c62.jpg'
   },
   address: {
     type: Sequelize.STRING,
