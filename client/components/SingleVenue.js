@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {fetchSingleVenue} from '../store/venue'
 import {connect} from 'react-redux'
-import {addToCart} from '../store/cart'
+import {addToCart, addToLocalCart} from '../store/cart'
 import {Button, Header, Form, Segment} from 'semantic-ui-react'
 
 class SingleVenue extends Component {
@@ -10,14 +10,20 @@ class SingleVenue extends Component {
 
     this.state = {quantity: 1}
     this.handleChange = this.handleChange.bind(this)
+    this.handleAddToCart = this.handleAddToCart.bind(this)
   }
 
   componentDidMount() {
     this.props.populateVenue(this.props.match.params.id)
   }
 
-  handleAddToCart(venueId) {
-    this.props.addToCart(venueId, this.state.quantity)
+  handleAddToCart() {
+    if (this.props.isLoggedIn){
+      this.props.addToCart(this.props.venue.id, this.state.quantity)
+    }
+    else {
+      this.props.addToLocalCart(this.props.venue, this.state.quantity)
+    }
   }
 
   handleChange(event) {
@@ -25,7 +31,7 @@ class SingleVenue extends Component {
   }
 
   render() {
-    const {name, type, price, capacity, address, id} = this.props.venue
+    const {name, type, price, capacity, address} = this.props.venue
     return (
       <Segment placeholder>
         <Header>
@@ -54,7 +60,7 @@ class SingleVenue extends Component {
           size="huge"
           color="blue"
           type="button"
-          onClick={() => this.handleAddToCart(id, this.state.quantity)}
+          onClick={this.handleAddToCart}
         >
           Add to Cart
         </Button>
@@ -64,12 +70,14 @@ class SingleVenue extends Component {
 }
 
 const mapStateToProps = state => ({
-  venue: state.venues.selectedVenue
+  venue: state.venues.selectedVenue,
+  isLoggedIn: !!state.user.id
 })
 
 const mapDispatchToProps = dispatch => ({
   populateVenue: id => dispatch(fetchSingleVenue(id)),
-  addToCart: (venueId, quantity) => dispatch(addToCart(venueId, quantity))
+  addToCart: (venueId, quantity) => dispatch(addToCart(venueId, quantity)),
+  addToLocalCart: (venue, quantity) => dispatch(addToLocalCart(venue, quantity))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SingleVenue)
