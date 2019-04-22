@@ -57,6 +57,11 @@ export const deletedFromLocalCart = venueId => ({
   venueId
 })
 
+export const mergedCarts = (remoteCartItems) => ({
+  type: MERGED_CARTS,
+  remoteCartItems
+})
+
 // Thunks
 
 export const fetchCart = () => async(dispatch) => {
@@ -176,7 +181,30 @@ export const deleteFromLocalCart = venueId => dispatch => {
   dispatch(deletedFromLocalCart(venueId))
 }
 
-export const mergeCarts = () => {} // todo
+export const mergeCarts = () => async(dispatch) => {
+  try {
+    const localCartStr = localStorage.getItem('cart')
+    const localCart = localCartStr ? JSON.parse(localCartStr) : []
+    const addToCartPromises = localCart.map(item => (
+      axios.post('/api/carts', {
+        venueId: item.venueId,
+        quantity: item.quantity
+      })
+    ))
+    await Promise.all(addToCartPromises)
+    localStorage.setItem('cart', null)
+    // fetch remote cart items again
+    const {data} = await axios.get('/api/carts')
+    const cartItems = data.map(ti => ({
+      venue: ti.venue,
+      quantity: ti.quantity
+    }))
+    dispatch(mergedCarts(cartItems))
+  }
+  catch (error){
+    console.error(error)
+  }
+}
 
 const initialState = {cart: [], localCart: []}
 
@@ -235,6 +263,12 @@ export default function(state = initialState, action) {
       return {
         cart: state.cart,
         localCart: newLocalCart
+      }
+    }
+    case MERGED_CARTS: {
+      return {
+        cart: action.remoteCartItems,
+        localCart: []
       }
     }
     default:
