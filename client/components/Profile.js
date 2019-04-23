@@ -58,12 +58,13 @@ class Profile extends Component {
     }))
   }
 
-  handleEdit() {
-    this.props.editUser(this.state)
+  async handleEdit() {
+    await this.props.editUser(this.state)
     this.setState({
       editingEmail: false,
       editingName: false
     })
+    this.props.fetchUser()
   }
   handleChange(event) {
     this.setState({
@@ -75,7 +76,9 @@ class Profile extends Component {
     let {firstName, lastName, email, id, transactions} = this.props.userState
     firstName = firstName[0].toUpperCase() + firstName.slice(1)
     lastName = lastName[0].toUpperCase() + lastName.slice(1)
-
+    if (transactions && transactions.length) {
+      transactions.sort((a,b) => b.id - a.id)
+    }
     return (
       <div>
         <Header textAlign="center" size="huge">
@@ -105,7 +108,6 @@ class Profile extends Component {
               >
                 <div>Name</div>
               </Divider>
-
               {this.state.editingName ? (
                 <div>
                   <Input
@@ -128,7 +130,7 @@ class Profile extends Component {
                   </Button>
                   <Button as="a" size="large" color='red' onClick={this.editName}>
                     Cancel{' '}
-                    <Icon style={{margin: '0px 5px'}} name="edit outline" />
+                    <Icon style={{margin: '0px 5px'}} name="cancel" />
                   </Button>
                 </div>
               ) : (
@@ -152,10 +154,32 @@ class Profile extends Component {
               >
                 <div>Email</div>
               </Divider>
-              <p style={{fontSize: '1.25em'}}>{email}</p>
-              <Button as="a" size="large">
-                Edit <Icon style={{margin: '0px 5px'}} name="edit outline" />
+
+
+              {this.state.editingEmail ? (
+                <div>
+                  <Input
+                    name="email"
+                    type="text"
+                    value={this.state.email}
+                    onChange={this.handleChange}
+                  />
+                  <Button as="a" size="large" color="green" onClick={this.handleEdit}>
+                    Accept{' '}
+                    <Icon style={{margin: '0px 5px'}} name="edit outline" />
+                  </Button>
+                  <Button as="a" size="large" color='red' onClick={this.editEmail}>
+                    Cancel{' '}
+                    <Icon style={{margin: '0px 5px'}} name="cancel" />
+                  </Button>
+                </div>
+              ):(
+              <div>
+                <p style={{fontSize: '1.25em'}}>{email}</p>
+                <Button as="a" size="large" onClick={this.editEmail}>Edit <Icon style={{margin: '0px 5px'}} name="edit outline" />
               </Button>
+              </div>)}
+
               <Divider
                 as="h3"
                 className="header"

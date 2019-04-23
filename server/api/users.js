@@ -25,6 +25,7 @@ router.get('/me', async (req, res, next) => {
           where: {
             isCart: false
           },
+          order: ["transactionId", "ASC"],
           include: [
             {
               model: TransactionItem,
@@ -37,8 +38,9 @@ router.get('/me', async (req, res, next) => {
 
           ],
         }
-      ]
+      ],
     })
+    console.log('*****user: ', user.transactions);
     res.json(user)
   } catch (err) {
     next(err)
