@@ -24,6 +24,11 @@ form div {
   margin-left: 20px !important
 }
 
+body > div,
+body > div > div,
+body > div > div > div.login-form {
+  height: 100%;
+}
 
 
 .StripeCheckout>span {

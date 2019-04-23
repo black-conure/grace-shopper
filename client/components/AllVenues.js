@@ -15,22 +15,21 @@ class AllVenues extends Component {
   render() {
     return (
       <div>
-        <h1>All Venues</h1>
-        <Grid columns = {4} celled>
+        <h1 text-align='center' >All Venues</h1>
+        <Grid columns = {3} celled>
         <Grid.Row stretched>
           {this.props.venues.map(venue => {
             return (
             <Grid.Column columns='equal' key={venue.id} >
               <Card class="venuecards" color='blue' centered>
               <Link to={`venues/${venue.id}`}>
-                <Image src={venue.imageUrl}  size='large' />
+                <Image src={venue.imageUrl}  size='huge' />
                 <Card.Header>{venue.name}</Card.Header>
                 <Card.Meta>Type: {venue.type}</Card.Meta>
-                <Card.Description>
-                  <h4>Price: {venue.price}</h4>
+                <Card.Description>Price: {venue.price}
                 </Card.Description>
                 <Card.Description>
-                  <h4>Capacity: {venue.capacity}</h4>
+                  Capacity: {venue.capacity}
                 </Card.Description>
                 <p>Address: {venue.address}</p>
                 </Link>
