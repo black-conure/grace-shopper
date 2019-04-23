@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 import {fetchCart, fetchLocalCart, checkout} from '../store/cart'
 import CartItem from './CartItem'
 class Cart extends Component {
@@ -32,7 +33,10 @@ class Cart extends Component {
             key={cartItem.venue.id}
           />
         ))}
-        <button type="button" onClick={this.handleCheckout}>Checkout</button>
+        {this.props.isLoggedIn ? 
+          <button type="button" onClick={this.handleCheckout}>Checkout</button> :
+          <p>To checkout, please <Link to="/login">log in</Link> or <Link to="/signup">sign up</Link>.</p>
+        }
       </div>
     )
   }
