@@ -4,11 +4,11 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
 
-import {Menu, Grid, Icon, Dropdown, GridColumn, Image} from 'semantic-ui-react'
+import {Menu, Grid, Icon, Dropdown, GridColumn, Image, Sticky} from 'semantic-ui-react'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
 
-    <Menu color={'blue'} inverted>
+    <Menu color='blue' inverted id='navBar' fixed='top'>
             <Menu.Item>
               <Link to="/home">Home</Link>
             </Menu.Item>

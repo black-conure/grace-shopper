@@ -36,3 +36,18 @@ body > div > div > div.login-form {
   padding: 10px !important;
   height: 50px !important;
 }
+#navBar{
+  position: sticky;
+}
+
+#profileContainer{
+  padding: 10em;
+}
+
+#homepageBackground{
+  background-image: url("/heroPic.jpeg");
+  background-size: cover;
+  background-attachment:fixed;
+  min-height:calc(100% - 100px);
+  width:100%;
+}
