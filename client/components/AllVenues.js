@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {fetchAllVenues} from '../store/venue'
 import {addToCart} from '../store/cart'
-import {Grid, Column, Button, Card, Image} from 'semantic-ui-react'
+import {Grid, Column, Button, Card, Image, Header} from 'semantic-ui-react'
 
 class AllVenues extends Component {
   componentDidMount() {
@@ -15,7 +15,7 @@ class AllVenues extends Component {
   render() {
     return (
       <div>
-        <h1 text-align='center' >All Venues</h1>
+        <Header size="huge" textAlign='center'><strong>All Venues</strong></Header>
         <Grid columns = {3} celled>
         <Grid.Row stretched>
           {this.props.venues.map(venue => {
