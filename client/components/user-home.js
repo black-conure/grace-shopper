@@ -1,18 +1,24 @@
-import React from 'react'
+import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
+
+import {mergeCarts} from '../store/cart'
 
 /**
  * COMPONENT
  */
-export const UserHome = props => {
-  const {email} = props
-
-  return (
-    <div>
-      <h3>Welcome, {email}</h3>
-    </div>
-  )
+class UserHome extends Component{
+  componentDidMount(){
+    this.props.mergeCarts()
+  }
+  render(){
+    const {email} = this.props
+    return (
+      <div>
+        <h3>Welcome, {email}</h3>
+      </div>
+    )
+  }
 }
 
 /**
@@ -23,8 +29,11 @@ const mapState = state => {
     email: state.user.email
   }
 }
+const mapDispatchToProps = dispatch => ({
+  mergeCarts: () => dispatch(mergeCarts())
+})
 
-export default connect(mapState)(UserHome)
+export default connect(mapState, mapDispatchToProps)(UserHome)
 
 /**
  * PROP TYPES

@@ -1,7 +1,8 @@
-import React, {Component, Fragment} from 'react'
+import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {editCart, deleteFromCart} from '../store/cart'
+import {editCart, deleteFromCart, addToLocalCart, deleteFromLocalCart} from '../store/cart'
 import {Link} from 'react-router-dom'
+<<<<<<< HEAD
 import {
   Button,
   Icon,
@@ -12,6 +13,10 @@ import {
   Segment,
   Input
 } from 'semantic-ui-react'
+=======
+import {Button, Icon, Image, Item, Label, Card, Segment, Input } from 'semantic-ui-react'
+
+>>>>>>> master
 
 export class CartItem extends Component {
   constructor(props) {
@@ -36,14 +41,34 @@ export class CartItem extends Component {
       itemQuantity: event.target.value
     })
   }
+<<<<<<< HEAD
   handleAccept() {
     this.props.editCart(this.props.venue.id, this.state.itemQuantity)
+=======
+  handleAccept(){
+    if (this.props.isLoggedIn){
+      this.props.editCart(this.props.venue.id, this.state.itemQuantity)
+    }
+    else {
+      this.props.editLocalCart(this.props.venue, this.state.itemQuantity)
+    }
+>>>>>>> master
     this.setState({
       isEditing: false
     })
   }
+<<<<<<< HEAD
   handleDelete() {
     this.props.deleteFromCart(this.props.venue.id)
+=======
+  handleDelete(){
+    if (this.props.isLoggedIn){
+      this.props.deleteFromCart(this.props.venue.id)
+    }
+    else {
+      this.props.deleteFromLocalCart(this.props.venue.id)
+    }
+>>>>>>> master
   }
   render() {
     return (
@@ -101,9 +126,19 @@ export class CartItem extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  editCart: (venueId, quantity) => dispatch(editCart(venueId, quantity)),
-  deleteFromCart: venueId => dispatch(deleteFromCart(venueId))
+const mapStateToProps = state => ({
+  isLoggedIn: !!state.user.id
 })
 
-export default connect(null, mapDispatchToProps)(CartItem)
+const mapDispatchToProps = dispatch => ({
+  editCart: (venueId, quantity) => dispatch(editCart(venueId, quantity)),
+<<<<<<< HEAD
+  deleteFromCart: venueId => dispatch(deleteFromCart(venueId))
+=======
+  deleteFromCart: venueId => dispatch(deleteFromCart(venueId)),
+  editLocalCart: (venue, quantity) => dispatch(addToLocalCart(venue, quantity)),
+  deleteFromLocalCart: venueId => dispatch(deleteFromLocalCart(venueId))
+>>>>>>> master
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CartItem)

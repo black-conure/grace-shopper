@@ -2,15 +2,11 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {fetchAllVenues} from '../store/venue'
-import {addToCart} from '../store/cart'
-import {Grid, Column, Button, Card, Image, Header} from 'semantic-ui-react'
+import {Grid, Card, Image, Header} from 'semantic-ui-react'
 
 class AllVenues extends Component {
   componentDidMount() {
     this.props.populateVenues()
-  }
-  handleAddToCart(venueId){
-    this.props.addToCart(venueId, 1)
   }
   render() {
     return (
@@ -51,7 +47,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = (dispatch) => (
   {
     populateVenues : () => dispatch(fetchAllVenues()),
-    addToCart: (venueId, quantity) => dispatch(addToCart(venueId, quantity))
   }
 )
 
