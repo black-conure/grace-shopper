@@ -192,7 +192,7 @@ export const mergeCarts = () => async(dispatch) => {
       })
     ))
     await Promise.all(addToCartPromises)
-    localStorage.setItem('cart', null)
+    localStorage.setItem('cart', '[]')
     // fetch remote cart items again
     const {data} = await axios.get('/api/carts')
     const cartItems = data.map(ti => ({
