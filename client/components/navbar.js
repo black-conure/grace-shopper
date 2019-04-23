@@ -9,8 +9,6 @@ import {Menu, Grid, Icon, Dropdown, GridColumn, Image} from 'semantic-ui-react'
 const Navbar = ({handleClick, isLoggedIn}) => (
 
     <Menu color={'blue'} inverted>
-
-
             <Menu.Item>
               <Link to="/home">Home</Link>
             </Menu.Item>
