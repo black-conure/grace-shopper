@@ -19,3 +19,15 @@ form div {
   margin: 1em;
   display: inline-block;
 } */
+
+.cart-item-content {
+  margin-left: 20px !important
+}
+
+
+
+.StripeCheckout>span {
+  font-size: 25px !important;
+  padding: 10px !important;
+  height: 50px !important;
+}

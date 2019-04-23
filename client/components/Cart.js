@@ -4,8 +4,7 @@ import {fetchCart, checkout} from '../store/cart'
 import CartItem from './CartItem'
 import StripeCheckout from 'react-stripe-checkout';
 import STRIPE_PUBLISHABLE from '../constants/stripe';
-
-
+import { Item } from 'semantic-ui-react'
 
 class Cart extends Component {
   constructor(props){
@@ -38,12 +37,15 @@ class Cart extends Component {
       <div>
 
         {this.props.cart.length < 1 ? <h2>Your Shopping Cart is Empty</h2> : <h2>Your Shopping Cart:</h2>}
+        <Item.Group divided>
         {this.props.cart.map(cartItem => (
           <CartItem
             venue={cartItem.venue} quantity={cartItem.quantity}
             key={cartItem.venue.id}
           />
         ))}
+        </Item.Group>
+
         {/* <button type="button" onClick={this.handleCheckout}>Checkout</button> */}
         {/* THIS IS THE STRIPE CHECKOUT */}
         <div>
