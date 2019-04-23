@@ -34,6 +34,7 @@ export const me = () => async dispatch => {
 export const fetchUserData = () => async dispatch => {
   try {
     const res = await axios.get('/api/users/me')
+
     dispatch(getUser(res.data || defaultUser))
   } catch (err) {
     console.error(err)
