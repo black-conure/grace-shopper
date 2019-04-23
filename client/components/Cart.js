@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {fetchCart, checkout} from '../store/cart'
+import {Link} from 'react-router-dom'
+import {fetchCart, fetchLocalCart, checkout} from '../store/cart'
 import CartItem from './CartItem'
 import StripeCheckout from 'react-stripe-checkout';
 import STRIPE_PUBLISHABLE from '../constants/stripe';
@@ -16,7 +17,12 @@ class Cart extends Component {
     return this.props.cart.length < 1 ? true : false
   }
   componentDidMount(){
-    this.props.fetchCart()
+    if (this.props.isLoggedIn){
+      this.props.fetchCart()
+    }
+    else {
+      this.props.fetchLocalCart()
+    }
   }
   handleCheckout(){
     this.props.checkout()
@@ -33,21 +39,21 @@ class Cart extends Component {
   }
 
   render(){
+    let cart = this.props.localCart
+    if (this.props.isLoggedIn){
+      cart = this.props.cart
+    }
     return (
       <div>
-
-        {this.props.cart.length < 1 ? <h2>Your Shopping Cart is Empty</h2> : <h2>Your Shopping Cart:</h2>}
+        {cart.length < 1 ? <h2>Your Shopping Cart is Empty</h2> : <h2>Your Shopping Cart:</h2>}
         <Item.Group divided>
-        {this.props.cart.map(cartItem => (
+        {cart.map(cartItem => (
           <CartItem
             venue={cartItem.venue} quantity={cartItem.quantity}
             key={cartItem.venue.id}
           />
         ))}
         </Item.Group>
-
-        {/* <button type="button" onClick={this.handleCheckout}>Checkout</button> */}
-        {/* THIS IS THE STRIPE CHECKOUT */}
         <div>
           <StripeCheckout
             name={name}
@@ -59,17 +65,24 @@ class Cart extends Component {
             disabled={!this.props.cart.length}
           />
         </div>
+        {this.props.isLoggedIn ? 
+          null :
+          <p>To checkout, please <Link to="/login">log in</Link> or <Link to="/signup">sign up</Link>.</p>
+        }
       </div>
     )
   }
 }
 
 const mapStateToProps = state => ({
-  cart: state.cart
+  cart: state.cart.cart,
+  localCart: state.cart.localCart,
+  isLoggedIn: !!state.user.id
 })
 
 const mapDispatchToProps = dispatch => ({
   fetchCart: () => dispatch(fetchCart()),
+  fetchLocalCart: () => dispatch(fetchLocalCart()),
   checkout: () => dispatch(checkout())
 })
 
