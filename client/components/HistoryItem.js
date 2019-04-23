@@ -13,7 +13,7 @@ import {
 } from 'semantic-ui-react'
 
 const HistoryItem = props => {
-  console.log('*****History item props: ', props)
+
   return props.transaction.map(ti => {
     return (
       <div key={ti.id}>

@@ -15,14 +15,18 @@ import {
 
 //Prop is entire transaction
 const OrderHistory = props => {
-  console.log('*****ORDER HISTORY props: ', props)
   return props.transactions.map(transaction => {
     let price = 0
     let ti = transaction['transaction-items']
     transaction['transaction-items'].forEach(item => {
       price = price + item.purchasePrice
-      console.log('OOOoOOOOOOoo', price)
     })
+    let date = new Date(transaction.date)
+
+    let orderDate =
+      date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear()
+
+
     return (
       <div key={transaction.id}>
         <Divider
@@ -33,6 +37,7 @@ const OrderHistory = props => {
         >
           <div>Order Number: #{transaction.id}</div>
           <div>Total Purchase Price: ${price * 100}</div>
+          <div>Placed On: {orderDate}</div>
         </Divider>
         <Grid divided>
           <HistoryItem transaction={ti} />

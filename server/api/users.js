@@ -44,3 +44,17 @@ router.get('/me', async (req, res, next) => {
     next(err)
   }
 })
+
+router.put('/me', async (req, res, next) => {
+  try {
+    let updated = await User.update(req.body, {
+      where: {
+        id: req.user.id,
+      },
+      returning: true
+    })
+    res.json(updated)
+  } catch (error) {
+    next(error)
+  }
+})
