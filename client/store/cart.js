@@ -72,7 +72,7 @@ export const fetchCart = () => async(dispatch) => {
       quantity: ti.quantity
     }))
     dispatch(fetchedCart(cartItems))
-  } 
+  }
   catch (error) {
     console.error(error)
   }
@@ -118,7 +118,7 @@ export const checkout = () => async(dispatch) => {
   try {
     await axios.post('/api/carts/checkout')
     dispatch(checkedOut())
-  } 
+  }
   catch (err){
     console.error(err)
   }
