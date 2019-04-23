@@ -19,3 +19,20 @@ form div {
   margin: 1em;
   display: inline-block;
 } */
+
+.cart-item-content {
+  margin-left: 20px !important
+}
+
+body > div,
+body > div > div,
+body > div > div > div.login-form {
+  height: 100%;
+}
+
+
+.StripeCheckout>span {
+  font-size: 25px !important;
+  padding: 10px !important;
+  height: 50px !important;
+}

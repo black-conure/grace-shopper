@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {fetchSingleVenue} from '../store/venue'
 import {connect} from 'react-redux'
 import {addToCart} from '../store/cart'
-import {Button, Header, Form, Segment} from 'semantic-ui-react'
+import {Button, Header, Form, Segment, Image} from 'semantic-ui-react'
 
 class SingleVenue extends Component {
   constructor(props) {
@@ -25,13 +25,16 @@ class SingleVenue extends Component {
   }
 
   render() {
-    const {name, type, price, capacity, address, id} = this.props.venue
+    const {name, type, price, capacity, address, id, imageUrl, description} = this.props.venue
     return (
       <Segment placeholder>
+      <Image src={imageUrl} />
         <Header>
           <font size="6">{name}</font>
         </Header>
         <h3>Type: {type}</h3>
+        <h3>Description:</h3>
+        <h4>{description}</h4>
         <h4>Price: {price}</h4>
         <h4>Capacity: {capacity}</h4>
         <p>Address: {address}</p>

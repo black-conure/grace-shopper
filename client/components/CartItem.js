@@ -1,8 +1,9 @@
 import React, {Component, Fragment} from 'react'
 import {connect} from 'react-redux'
 import {editCart, deleteFromCart} from '../store/cart'
-import {Button, Card, Image} from 'semantic-ui-react'
 import {Link} from 'react-router-dom'
+import { Button, Icon, Image, Item, Label, Card, Segment, Input } from 'semantic-ui-react'
+
 
 export class CartItem extends Component {
   constructor(props){
@@ -38,32 +39,45 @@ export class CartItem extends Component {
   }
   render(){
     return (
-      <Card>
-        <Link to={`/venues/${this.props.venue.id}`}><Image /></Link>
-        <Card.Header>{this.props.venue.name}</Card.Header>
-        <Card.Description>
+      <Item>
+        <Segment as={Link} to={`/venues/${this.props.venue.id}`}>
+        <Item.Image src={this.props.venue.imageUrl} size={'medium'}/>
+
+
+        </Segment>
+        <Item.Content className="cart-item-content" >
+        <Link to={`/venues/${this.props.venue.id}`}>
+          <Item.Header><h3>{this.props.venue.name}</h3></Item.Header></Link>
+
+        <Item.Description>
           {this.state.isEditing ?
-            <input
+            <Input
               type="number" min="0" value={this.state.itemQuantity}
               onChange={this.handleQuantityChange}
               placeholder={this.state.itemQuantity}
             />:
             <h4>Quantity: {this.props.quantity}</h4>
           }
-        </Card.Description>
+        </Item.Description>
         {this.state.isEditing ?
-          <button type="button" onClick={this.handleAccept}>Accept</button> :
+          <Button type="button" onClick={this.handleAccept}>Accept</Button> :
           null}
-        <button
-          type="button" onClick={this.toggleEditing}
-        >{this.state.isEditing ? 'Cancel' : 'Edit Quantity'}</button>
-        <Card.Description>
+        <Button
+          type="button" onClick={this.toggleEditing} size="small" color="blue"
+        >{this.state.isEditing ? 'Cancel' : 'Edit Quantity'}</Button>
+        <Item.Description>
           <h4>Price: {this.props.venue.price}</h4>
-        </Card.Description>
-        <button
-          type="button" onClick={this.handleDelete}
-        >Delete</button>
-      </Card>
+        </Item.Description>
+        <Button
+          type="button" onClick={this.handleDelete} size="small"
+          color="red"
+        >Delete</Button>
+
+
+        </Item.Content>
+
+      </Item>
+
     )
   }
 }

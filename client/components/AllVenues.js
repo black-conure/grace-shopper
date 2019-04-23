@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {fetchAllVenues} from '../store/venue'
 import {addToCart} from '../store/cart'
-import {Button, Card, Image} from 'semantic-ui-react'
+import {Grid, Column, Button, Card, Image, Header} from 'semantic-ui-react'
 
 class AllVenues extends Component {
   componentDidMount() {
@@ -15,27 +15,30 @@ class AllVenues extends Component {
   render() {
     return (
       <div>
-        <h1>All Venues</h1>
-        <Card.Group>
+        <Header size="huge" textAlign='center'><strong>All Venues</strong></Header>
+        <Grid columns = {3} celled>
+        <Grid.Row stretched>
           {this.props.venues.map(venue => {
             return (
-              <Card key={venue.id}>
+            <Grid.Column columns='equal' key={venue.id} >
+              <Card class="venuecards" color='blue' centered>
               <Link to={`venues/${venue.id}`}>
-                <Image src={venue.imageUrl} />
+                <Image src={venue.imageUrl}  size='huge' />
                 <Card.Header>{venue.name}</Card.Header>
                 <Card.Meta>Type: {venue.type}</Card.Meta>
-                <Card.Description>
-                  <h4>Price: {venue.price}</h4>
+                <Card.Description>Price: {venue.price}
                 </Card.Description>
                 <Card.Description>
-                  <h4>Capacity: {venue.capacity}</h4>
+                  Capacity: {venue.capacity}
                 </Card.Description>
                 <p>Address: {venue.address}</p>
                 </Link>
               </Card>
+            </Grid.Column>
             )
           })}
-        </Card.Group>
+          </Grid.Row>
+        </Grid>
       </div>
     )
   }

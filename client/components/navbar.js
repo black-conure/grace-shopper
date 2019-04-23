@@ -4,66 +4,63 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
 
-import {Menu, Grid} from 'semantic-ui-react'
+import {Menu, Grid, Icon, Dropdown, GridColumn, Image} from 'semantic-ui-react'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
-  <div>
+
     <Menu color={'blue'} inverted>
-      <Grid columns={6}>
-        <Grid.Row stretched>
+
+
+            <Menu.Item>
+              <Link to="/home">Home</Link>
+            </Menu.Item>
+
+
+            <Menu.Item>
+              <Link to="/venues">Venues</Link>
+            </Menu.Item>
+
+          <Menu.Item>
+             <Image src='/logo.png' size="mini" margin='10px'/> Graceful Venues
+          </Menu.Item>
+
+          <Menu.Menu position="right">
+          <Menu.Item >
+            <Link to="/cart">
+              <Icon name="shopping cart" size="large" />
+            </Link>
+          </Menu.Item>
+
           {isLoggedIn ? (
-            <Fragment>
-              {/* The navbar will show these links after you log in */}
-              <Menu.Item>
-                <Link to="/home">Home</Link>
-              </Menu.Item>
-              <Menu.Item>
-                <a href="#" onClick={handleClick}>
-                  Logout
-                </a>
-              </Menu.Item>
-            </Fragment>
+            <Menu.Item position="right">
+              <Dropdown text="User" labeled button inverted>
+                <Dropdown.Menu>
+                  <Dropdown.Header
+                    content={<Link to="/userProfile">User Profile</Link>}
+                  />
+                  <Dropdown.Header
+                    onClick={handleClick}
+                    content={<Link to="/userProfile">Log Out</Link>}
+                  />
+                </Dropdown.Menu>
+              </Dropdown>
+            </Menu.Item>
           ) : (
             <Fragment>
-              {/* The navbar will show these links before you log in */}
-              <Grid.Column>
-                <Menu.Item>
-                  <Link to="/login">Login</Link>
-                </Menu.Item>
-              </Grid.Column>
-              <Grid.Column>
-                <Menu.Item>
-                  <Link to="/signup">Sign Up</Link>
-                </Menu.Item>
-              </Grid.Column>
+              <Menu.Item>
+                <Link to="/login">Login</Link>
+              </Menu.Item>
+
+              <Menu.Item>
+                <Link to="/signup">Sign Up</Link>
+              </Menu.Item>
             </Fragment>
           )}
-          <Grid.Column>
-            <Menu.Item>
-              <Link to="/venues">All Venues</Link>
-            </Menu.Item>
-          </Grid.Column>
+          </Menu.Menu>
 
-          <Grid.Column>
-            <Menu.Item>Graceful Venues</Menu.Item>
-          </Grid.Column>
 
-          <Grid.Column>
-            <Menu.Item>
-              <Link to="/cart">Shopping Cart</Link>
-            </Menu.Item>
-          </Grid.Column>
-
-          <Grid.Column>
-            <Menu.Item>
-              <Link to="/userProfile">User Profile</Link>
-            </Menu.Item>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
     </Menu>
-    <hr />
-  </div>
+
 )
 
 /**
