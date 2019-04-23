@@ -70,7 +70,7 @@ const AuthForm = props => {
                 </Form.Field>
                 <Form.Field>
                   <label htmlFor="password">
-                    <large>Password</large>
+                    <div>Password</div>
                   </label>
                   <input
                     name="password"

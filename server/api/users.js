@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {User, Transaction, TransactionItem} = require('../db/models')
+const {User, Transaction, TransactionItem, Venue} = require('../db/models')
 module.exports = router
 
 router.get('/', async (req, res, next) => {
@@ -25,16 +25,38 @@ router.get('/me', async (req, res, next) => {
           where: {
             isCart: false
           },
+          order: ["transactionId", "ASC"],
           include: [
             {
-              model: TransactionItem
-            }
-          ]
+              model: TransactionItem,
+              include: [
+                {
+                model: Venue
+              }
+            ]
+            },
+
+          ],
         }
-      ]
+      ],
     })
+    console.log('*****user: ', user.transactions);
     res.json(user)
   } catch (err) {
     next(err)
+  }
+})
+
+router.put('/me', async (req, res, next) => {
+  try {
+    let updated = await User.update(req.body, {
+      where: {
+        id: req.user.id,
+      },
+      returning: true
+    })
+    res.json(updated)
+  } catch (error) {
+    next(error)
   }
 })
