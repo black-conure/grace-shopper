@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {User, Transaction, TransactionItem} = require('../db/models')
+const {User, Transaction, TransactionItem, Venue} = require('../db/models')
 module.exports = router
 
 router.get('/', async (req, res, next) => {
@@ -27,9 +27,15 @@ router.get('/me', async (req, res, next) => {
           },
           include: [
             {
-              model: TransactionItem
-            }
-          ]
+              model: TransactionItem,
+              include: [
+                {
+                model: Venue
+              }
+            ]
+            },
+
+          ],
         }
       ]
     })
