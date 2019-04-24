@@ -78,7 +78,7 @@ export class CartItem extends Component {
                 placeholder={this.state.itemQuantity}
               />
             ) : (
-              <h4>Quantity: {this.props.quantity}</h4>
+              <h4>Quantity (hours): {this.props.quantity}</h4>
             )}
           </Item.Description>
           {this.state.isEditing ? (
@@ -95,7 +95,7 @@ export class CartItem extends Component {
             {this.state.isEditing ? 'Cancel' : 'Edit Quantity'}
           </Button>
           <Item.Description>
-            <h4>Price: {this.props.venue.price}</h4>
+            <h4>Price: ${this.props.venue.price}</h4>
           </Item.Description>
           <Button
             type="button"

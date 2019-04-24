@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
 
-import {Menu, Grid, Icon, Dropdown, GridColumn, Image, Sticky} from 'semantic-ui-react'
+import {Menu, Icon, Dropdown, Image, Button} from 'semantic-ui-react'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
 
