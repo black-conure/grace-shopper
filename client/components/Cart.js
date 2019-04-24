@@ -5,7 +5,7 @@ import {fetchCart, fetchLocalCart, checkout} from '../store/cart'
 import CartItem from './CartItem'
 import StripeCheckout from 'react-stripe-checkout';
 import STRIPE_PUBLISHABLE from '../constants/stripe';
-import { Item } from 'semantic-ui-react'
+import { Item, Message } from 'semantic-ui-react'
 
 class Cart extends Component {
   constructor(props){
@@ -64,10 +64,15 @@ class Cart extends Component {
             stripeKey={STRIPE_PUBLISHABLE}
             disabled={!this.props.cart.length}
           />
+          <br/>
+          <br/>
+          <br/>
         </div>
-        {this.props.isLoggedIn ? 
+        {this.props.isLoggedIn ?
           null :
-          <p>To checkout, please <Link to="/login">log in</Link> or <Link to="/signup">sign up</Link>.</p>
+          <Message id="cartMessage" compact>
+            To checkout, please <Link to="/login">log in</Link> or <Link to="/signup">sign up</Link>.
+          </Message>
         }
       </div>
     )

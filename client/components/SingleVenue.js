@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {fetchSingleVenue} from '../store/venue'
+import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {addToCart, addToLocalCart} from '../store/cart'
 import {Button, Header, Form, Segment, Image} from 'semantic-ui-react'
@@ -18,10 +19,9 @@ class SingleVenue extends Component {
   }
 
   handleAddToCart() {
-    if (this.props.isLoggedIn){
+    if (this.props.isLoggedIn) {
       this.props.addToCart(this.props.venue.id, this.state.quantity)
-    }
-    else {
+    } else {
       this.props.addToLocalCart(this.props.venue, this.state.quantity)
     }
   }
@@ -31,17 +31,26 @@ class SingleVenue extends Component {
   }
 
   render() {
-    const {name, type, price, capacity, address, imageUrl, description} = this.props.venue
+    const {
+      name,
+      type,
+      price,
+      capacity,
+      address,
+      imageUrl,
+      description
+    } = this.props.venue
+    let dollarPrice = price/100
     return (
       <Segment placeholder>
-      <Image src={imageUrl} />
+        <Image src={imageUrl} />
         <Header>
           <font size="6">{name}</font>
         </Header>
         <h3>Type: {type}</h3>
         <h3>Description:</h3>
         <h4>{description}</h4>
-        <h4>Price: {price}</h4>
+        <h4>Price: {dollarPrice}</h4>
         <h4>Capacity: {capacity}</h4>
         <p>Address: {address}</p>
         <Form>
@@ -59,14 +68,16 @@ class SingleVenue extends Component {
             </Form.Field>
           </Form.Group>
         </Form>
-        <Button
-          size="huge"
-          color="blue"
-          type="button"
-          onClick={this.handleAddToCart}
-        >
-          Add to Cart
-        </Button>
+        <Link to="/cart">
+          <Button
+            size="huge"
+            color="blue"
+            type="button"
+            onClick={this.handleAddToCart}
+          >
+            Add to Cart
+          </Button>
+        </Link>
       </Segment>
     )
   }

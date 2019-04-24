@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
 import {
   Button,
   Container,
@@ -47,20 +48,31 @@ class DesktopContainer extends Component {
 
     return (
       <Responsive >
-
-
-        >
           <Segment id='homepageBackground'
 
             textAlign="center"
-            style={{ minHeight: 700, margin: '-1.5em 0em'}}
             vertical
           >
+          <Container text>
+            <p as="h2" style={{fontSize: '2em'}} id="homepageTitleBlerb1">
+              We help you find the perfect space</p>
+          </Container>
+
+          <Container text>
+            <p as="h3" style={{fontSize: '2em'}} id="homepageTitleBlerb2">
+              Studios, Offices, and Event spaces {'\n'}
+              for only as long as you need them.
+            </p>
+          </Container>
+
+
             <Container text>
+            <Link to='/venues'>
               <Button primary size="huge">
                 Start Shopping!
                 <Icon name="right arrow" />
               </Button>
+            </Link>
             </Container>
           </Segment>
 
@@ -92,33 +104,27 @@ const HomepageLayout = () => (
         <Grid.Row>
           <Grid.Column width={8}>
             <Header as="h3" style={{fontSize: '2em'}}>
-              We Help Companies and Companions
+              We help you find the space you were looking for!
             </Header>
             <p style={{fontSize: '1.33em'}}>
-              We can give your company superpowers to do things that they never
-              thought possible. Let us delight your customers and empower your
-              needs... through pure data analytics.
+              We aim to facilitate the creation of great art by amateur and professional artists alike.  Our company allows painters, dancers, musicians, photographers and more to have access to specialize tools and facilities for only as long as they need them.
             </p>
             <Header as="h3" style={{fontSize: '2em'}}>
-              We Make Bananas That Can Dance
+              Looking for the perfect space to paint, work or host?  Look no further!
             </Header>
             <p style={{fontSize: '1.33em'}}>
-              Yes that's right, you thought it was the stuff of dreams, but even
-              bananas can be bioengineered.
+              Be it art, work or space for friends and family to gather, our platform allows you to find the perfect space you need for as long as you may need it.  Need to practice that presentation with a projector or smartbooard?  Want to practice in a studio before an album recording?  You dont need to buy the equipment, just rent the space to borrow the associated equipment.
             </p>
           </Grid.Column>
           <Grid.Column floated="right" width={6}>
-            <Image
-              bordered
-              rounded
-              size="large"
-              src="/images/wireframe/white-image.png"
-            />
+          <Link to='/venues'>
+            <Button size="huge">Check Them Out</Button>
+            </Link>
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
           <Grid.Column textAlign="center">
-            <Button size="huge">Check Them Out</Button>
+
           </Grid.Column>
         </Grid.Row>
       </Grid>
@@ -139,7 +145,6 @@ const HomepageLayout = () => (
               "I shouldn't have gone with their competitor."
             </Header>
             <p style={{fontSize: '1.33em'}}>
-              <Image avatar src="/images/avatar/large/nan.jpg" />
               <b>Nan</b> Chief Fun Officer Acme Toys
             </p>
           </Grid.Column>
@@ -149,7 +154,7 @@ const HomepageLayout = () => (
     <Segment style={{padding: '8em 0em'}} vertical>
       <Container text>
         <Header as="h3" style={{fontSize: '2em'}}>
-          Breaking The Grid, Grabs Your Attention
+
         </Header>
         <p style={{fontSize: '1.33em'}}>
           Instead of focusing on content creation and hard work, we have learned
@@ -160,29 +165,10 @@ const HomepageLayout = () => (
         <Button as="a" size="large">
           Read More
         </Button>
-        <Divider
-          as="h4"
-          className="header"
-          horizontal
-          style={{margin: '3em 0em', textTransform: 'uppercase'}}
-        >
-          <a href="#">Case Studies</a>
-        </Divider>
-        <Header as="h3" style={{fontSize: '2em'}}>
-          Did We Tell You About Our Bananas?
-        </Header>
-        <p style={{fontSize: '1.33em'}}>
-          Yes I know you probably disregarded the earlier boasts as non-sequitur
-          filler content, but it's really true. It took years of gene splicing
-          and combinatory DNA research, but our bananas can really dance.
-        </p>
-        <Button as="a" size="large">
-          I'm Still Quite Interested
-        </Button>
       </Container>
     </Segment>
-    <Segment inverted vertical style={{padding: '5em 0em'}}>
-      <Container>
+    <Segment id='homepageFooter' inverted vertical style={{padding: '5em 0em'}}>
+      <Container  >
         <Grid divided inverted stackable>
           <Grid.Row>
             <Grid.Column width={3}>
