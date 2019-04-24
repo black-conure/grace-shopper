@@ -82,7 +82,7 @@ export class CartItem extends Component {
             )}
           </Item.Description>
           {this.state.isEditing ? (
-            <Button type="button" onClick={this.handleAccept}>
+            <Button type="button" color='green' onClick={this.handleAccept}>
               Accept
             </Button>
           ) : null}
