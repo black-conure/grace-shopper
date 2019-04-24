@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
+import Homepage from './Homepage'
 
 import {mergeCarts} from '../store/cart'
 
@@ -14,9 +15,7 @@ class UserHome extends Component{
   render(){
     const {email} = this.props
     return (
-      <div>
-        <h3>Welcome, {email}</h3>
-      </div>
+      <Homepage />
     )
   }
 }

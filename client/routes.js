@@ -10,7 +10,8 @@ import {
   SingleVenue,
   Cart,
   Profile,
-  Homepage
+  Homepage,
+
 } from './components'
 import {me} from './store'
 import {Container} from 'semantic-ui-react'
@@ -40,6 +41,7 @@ class Routes extends Component {
             {/* Routes placed here are only available after logging in */}
             <Route path="/home" component={Homepage} />
             <Route path="/userProfile" component={Profile} />
+            <Route path="/userhome" component={UserHome} />
 
             <Route path="/" component={Homepage} />
           </Switch>

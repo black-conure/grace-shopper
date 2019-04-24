@@ -26,6 +26,7 @@ class AllVenues extends Component {
                   Capacity: {venue.capacity}
                 </Card.Description>
                 <p>Address: {venue.address}</p>
+                <br />
                 <Card.Description ><strong>Price: ${venue.price/100}</strong>/per hour
                 </Card.Description>
                 </Link>
