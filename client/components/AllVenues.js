@@ -20,14 +20,15 @@ class AllVenues extends Component {
               <Card class="venuecards" color='blue' centered>
               <Link to={`venues/${venue.id}`}>
                 <Image src={venue.imageUrl}  size='huge' />
-                <Card.Header>{venue.name}</Card.Header>
+                <Card.Header><strong>{venue.name}</strong></Card.Header>
                 <Card.Meta>Type: {venue.type}</Card.Meta>
-                <Card.Description>Price: ${venue.price}
-                </Card.Description>
                 <Card.Description>
                   Capacity: {venue.capacity}
                 </Card.Description>
                 <p>Address: {venue.address}</p>
+                <br />
+                <Card.Description ><strong>Price: ${venue.price/100}</strong>/per hour
+                </Card.Description>
                 </Link>
               </Card>
             </Grid.Column>
