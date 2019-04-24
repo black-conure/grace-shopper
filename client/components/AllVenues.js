@@ -22,7 +22,7 @@ class AllVenues extends Component {
                 <Image src={venue.imageUrl}  size='huge' />
                 <Card.Header>{venue.name}</Card.Header>
                 <Card.Meta>Type: {venue.type}</Card.Meta>
-                <Card.Description>Price: {venue.price}
+                <Card.Description>Price: ${venue.price}
                 </Card.Description>
                 <Card.Description>
                   Capacity: {venue.capacity}

@@ -50,14 +50,14 @@ class SingleVenue extends Component {
         <h3>Type: {type}</h3>
         <h3>Description:</h3>
         <h4>{description}</h4>
-        <h4>Price: {dollarPrice}</h4>
+        <h4>Price: ${dollarPrice}</h4>
         <h4>Capacity: {capacity}</h4>
         <p>Address: {address}</p>
         <Form>
           <Form.Group widths="equal">
             <Form.Field>
               <label htmlFor="quantity">
-                <small>Quantity</small>
+                <small>Quantity (hours)</small>
               </label>
               <input
                 onChange={this.handleChange}
