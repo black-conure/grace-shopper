@@ -36,7 +36,7 @@ const OrderHistory = props => {
           style={{margin: '2em 0em', textTransform: 'uppercase'}}
         >
           <div>Order Number: #{transaction.id}</div>
-          <div>Total Purchase Price: ${price * 100}</div>
+          <div>Total Purchase Price: ${price/100}</div>
           <div>Placed On: {orderDate}</div>
         </Divider>
         <Grid divided>

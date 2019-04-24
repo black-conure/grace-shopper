@@ -32,7 +32,119 @@ body > div > div > div.login-form {
 
 
 .StripeCheckout>span {
-  font-size: 25px !important;
-  padding: 10px !important;
-  height: 50px !important;
+  font-size: 15px !important;
+  height: 30px !important;
+  padding-bottom: 25px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#navBar{
+  position: sticky;
+}
+
+#profileContainer{
+  padding: 10em;
+}
+
+#homepageBackground{
+  background-image: url("/heroPic.jpeg");
+  background-size: cover;
+  background-attachment:fixed;
+  min-height: 700px;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+
+
+}
+
+#homepageTitleBlerb1{
+  background-color: white;
+  border: solid 1px lightblue;
+  border-radius: 10px;
+  position: relative;
+  top: 40px;
+
+}
+#homepageTitleBlerb2{
+  background-color: white;
+  border: solid 1px lightblue;
+  border-radius: 10px;
+  position: relative;
+  top: 250px;
+
+}
+
+#homepageFooter{
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+#cartMessage{
+  width: 200px;
 }

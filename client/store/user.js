@@ -41,7 +41,7 @@ export const me = () => async dispatch => {
   }
 }
 
-// Newly added, not yet functional or connected anywhere
+
 export const fetchUserData = () => async dispatch => {
   try {
     const res = await axios.get('/api/users/me')

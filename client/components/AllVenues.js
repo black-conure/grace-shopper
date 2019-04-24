@@ -11,7 +11,7 @@ class AllVenues extends Component {
   render() {
     return (
       <div>
-        <Header size="huge" textAlign='center'><strong>All Venues</strong></Header>
+        <Header size="huge" textAlign='center' class="allvenuesHeader"><strong>All Venues</strong></Header>
         <Grid columns = {3} celled>
         <Grid.Row stretched>
           {this.props.venues.map(venue => {

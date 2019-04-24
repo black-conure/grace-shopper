@@ -40,7 +40,6 @@ router.get('/me', async (req, res, next) => {
         }
       ],
     })
-    console.log('*****user: ', user.transactions);
     res.json(user)
   } catch (err) {
     next(err)

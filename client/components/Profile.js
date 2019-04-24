@@ -80,7 +80,7 @@ class Profile extends Component {
       transactions.sort((a,b) => b.id - a.id)
     }
     return (
-      <div>
+      <div id='profileContainer'>
         <Header textAlign="center" size="huge">
           {this.state.historyShowing
             ? `${firstName}'s Order History`
