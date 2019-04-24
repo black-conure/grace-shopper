@@ -19,7 +19,7 @@ async function seed() {
   description:
    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
   address: '0 Main Street',
-  price: 10000000,
+  price: 100000,
   type: 'Office',
   capacity: 20 },
 { name: 'Office 1',
@@ -27,7 +27,7 @@ async function seed() {
   description:
    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
   address: '1 Main Street',
-  price: 2500000,
+  price: 25000,
   type: 'Office',
   capacity: 20 },
 { name: 'Office 2',
@@ -35,7 +35,7 @@ async function seed() {
   description:
    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
   address: '2 Main Street',
-  price: 50000,
+  price: 5000,
   type: 'Office',
   capacity: 20 },
 { name: 'Office 3',
@@ -43,7 +43,7 @@ async function seed() {
   description:
    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
   address: '3 Main Street',
-  price: 75000,
+  price: 7500,
   type: 'Office',
   capacity: 20 },
 { name: 'Office 4',
@@ -51,7 +51,7 @@ async function seed() {
   description:
    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
   address: '4 Main Street',
-  price: 100000,
+  price: 10000,
   type: 'Office',
   capacity: 20 },
 { name: 'Office 5',
@@ -59,7 +59,7 @@ async function seed() {
   description:
    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
   address: '5 Main Street',
-  price: 120005,
+  price: 12050,
   type: 'Office',
   capacity: 20 },
 { name: 'Office 6',
@@ -67,7 +67,7 @@ async function seed() {
   description:
    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
   address: '6 Main Street',
-  price: 150000,
+  price: 15000,
   type: 'Office',
   capacity: 20 },
 { name: 'Office 7',
@@ -75,7 +75,7 @@ async function seed() {
   description:
    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
   address: '7 Main Street',
-  price: 170005,
+  price: 17050,
   type: 'Office',
   capacity: 20 },
 { name: 'Office 8',
@@ -83,7 +83,7 @@ async function seed() {
   description:
    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
   address: '8 Main Street',
-  price: 200000,
+  price: 20000,
   type: 'Office',
   capacity: 20 },
 { name: 'Office 9',
@@ -91,7 +91,7 @@ async function seed() {
   description:
    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
   address: '9 Main Street',
-  price: 220005,
+  price: 22005,
   type: 'Office',
   capacity: 20 } ]
 
@@ -100,7 +100,7 @@ async function seed() {
   description:
    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
   address: '0 Fulton Street',
-  price: 570000,
+  price: 57000,
   type: 'Event-Space',
   capacity: 200 },
 { name: 'Event Space 1',
@@ -156,7 +156,7 @@ async function seed() {
   description:
    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
   address: '7 Fulton Street',
-  price: 700000,
+  price: 70000,
   type: 'Event-Space',
   capacity: 200 },
 { name: 'Event Space 8',
@@ -164,7 +164,7 @@ async function seed() {
   description:
    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
   address: '8 Fulton Street',
-  price: 809000,
+  price: 89900,
   type: 'Event-Space',
   capacity: 200 },
 { name: 'Event Space 9',
@@ -172,16 +172,16 @@ async function seed() {
   description:
    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
   address: '9 Fulton Street',
-  price: 905500,
+  price: 99900,
   type: 'Event-Space',
   capacity: 200 } ]
 
   let studios = [ { name: 'Studio 0',
-  imageUrl: 'https://i.pinimg.com/originals/32/62/2c/32622cbcd26afcdc5b30477a629a8c62.jpg',
+  imageUrl: 'https://www.foxandhazel.com/wp-content/uploads/2018/03/Home-Art-Studio-Tour-with-Fox-Hazel-1.jpg',
   description:
    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
   address: '0 Wall Street',
-  price: 990000,
+  price: 50000,
   type: 'Studio',
   capacity: 5 },
 { name: 'Studio 1',
@@ -189,15 +189,15 @@ async function seed() {
   description:
    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
   address: '1 Wall Street',
-  price: 50000,
+  price: 30000,
   type: 'Studio',
   capacity: 5 },
 { name: 'Studio 2',
-  imageUrl: 'https://www.sneakybig.com/wp-content/uploads/studio-hero-recording-studio.jpg',
+  imageUrl: 'https://st.hzcdn.com/simgs/be0123fc044c016d_4-9153/mediterranean-home-office.jpg',
   description:
    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
   address: '2 Wall Street',
-  price: 100000,
+  price: 10000,
   type: 'Studio',
   capacity: 5 },
 { name: 'Studio 3',
@@ -213,7 +213,7 @@ async function seed() {
   description:
    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
   address: '4 Wall Street',
-  price: 20000,
+  price: 25000,
   type: 'Studio',
   capacity: 5 },
 { name: 'Studio 5',
@@ -221,7 +221,7 @@ async function seed() {
   description:
    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
   address: '5 Wall Street',
-  price: 252500,
+  price: 255000,
   type: 'Studio',
   capacity: 5 },
 { name: 'Studio 6',
@@ -233,7 +233,7 @@ async function seed() {
   type: 'Studio',
   capacity: 5 },
 { name: 'Studio 7',
-  imageUrl: 'https://files.thefunpalette.com/media/djangocms_parallax/1255a234-46aa-11e8-baed-42010af00f06.jpg.1400x600_q85_crop.jpg',
+  imageUrl: 'https://cdn.homedit.com/wp-content/uploads/2013/05/attic-studio-artist.jpg',
   description:
    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
   address: '7 Wall Street',
@@ -245,11 +245,11 @@ async function seed() {
   description:
    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
   address: '8 Wall Street',
-  price: 40000,
+  price: 400000,
   type: 'Studio',
   capacity: 5 },
 { name: 'Studio 9',
-  imageUrl: 'https://i.pinimg.com/originals/32/62/2c/32622cbcd26afcdc5b30477a629a8c62.jpg',
+  imageUrl: 'https://i.pinimg.com/originals/e2/14/18/e21418e5b9dcd2a3e97b2a4ec0b0207d.jpg',
   description:
    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
   address: '9 Wall Street',
@@ -257,7 +257,7 @@ async function seed() {
   type: 'Studio',
   capacity: 5 } ]
 
-  const venues = [...offices, ...eventSpaces, ...studios]
+  const venues = [ ...studios, ...eventSpaces,...offices]
   const venuePromises = venues.map(venue => Venue.create(venue))
   await Promise.all(venuePromises)
 
