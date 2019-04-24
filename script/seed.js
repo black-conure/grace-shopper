@@ -100,7 +100,7 @@ async function seed() {
   description:
    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
   address: '0 Fulton Street',
-  price: 0,000
+  price: 570000,
   type: 'Event-Space',
   capacity: 200 },
 { name: 'Event Space 1',
@@ -164,7 +164,7 @@ async function seed() {
   description:
    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
   address: '8 Fulton Street',
-  price: 800000,
+  price: 809000,
   type: 'Event-Space',
   capacity: 200 },
 { name: 'Event Space 9',
@@ -172,7 +172,7 @@ async function seed() {
   description:
    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
   address: '9 Fulton Street',
-  price: 900000,
+  price: 905500,
   type: 'Event-Space',
   capacity: 200 } ]
 
@@ -181,7 +181,7 @@ async function seed() {
   description:
    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
   address: '0 Wall Street',
-  price: 0,000
+  price: 990000,
   type: 'Studio',
   capacity: 5 },
 { name: 'Studio 1',
@@ -213,7 +213,7 @@ async function seed() {
   description:
    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
   address: '4 Wall Street',
-  price: 200000,
+  price: 20000,
   type: 'Studio',
   capacity: 5 },
 { name: 'Studio 5',
@@ -221,7 +221,7 @@ async function seed() {
   description:
    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
   address: '5 Wall Street',
-  price: 250000,
+  price: 252500,
   type: 'Studio',
   capacity: 5 },
 { name: 'Studio 6',
@@ -229,7 +229,7 @@ async function seed() {
   description:
    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
   address: '6 Wall Street',
-  price: 300000,
+  price: 30000,
   type: 'Studio',
   capacity: 5 },
 { name: 'Studio 7',
@@ -237,7 +237,7 @@ async function seed() {
   description:
    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
   address: '7 Wall Street',
-  price: 350000,
+  price: 35000,
   type: 'Studio',
   capacity: 5 },
 { name: 'Studio 8',
@@ -245,7 +245,7 @@ async function seed() {
   description:
    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ex magna, egestas sed malesuada nec, porttitor ut metus. Nunc non luctus dolor. Sed bibendum sed diam nec vehicula. Integer luctus, metus at fermentu',
   address: '8 Wall Street',
-  price: 400000,
+  price: 40000,
   type: 'Studio',
   capacity: 5 },
 { name: 'Studio 9',
